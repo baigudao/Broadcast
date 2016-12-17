@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/send_standard_broadcast" />
 
+    <Button
+        android:id="@+id/btn_send_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_order_broadcast" />
+
 </LinearLayout>
