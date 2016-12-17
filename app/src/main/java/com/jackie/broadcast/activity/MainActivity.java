@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.jackie.broadcast.R;
 import com.jackie.broadcast.receiver.MyStandardBroadcastReceiver;
+import com.jackie.broadcast.receiver.NetworkChangeReceiver;
 
 /**
  * Created by Administrator on 2016/12/17.
@@ -18,6 +19,7 @@ public class MainActivity extends Activity {
     private Button button_send_standard;
     private Button button_send_order;
     private MyStandardBroadcastReceiver receiver;
+    private NetworkChangeReceiver networkChangeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,16 @@ public class MainActivity extends Activity {
         });
 
 
+        //动态注册实现监听网络变化
+        networkChangeReceiver = new NetworkChangeReceiver();
+        registerReceiver(networkChangeReceiver,new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        unregisterReceiver(networkChangeReceiver);
     }
 }
