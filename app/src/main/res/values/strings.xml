@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Broadcast</string>
+    <string name="send_standard_broadcast">send_standard_broadcast</string>
 </resources>
