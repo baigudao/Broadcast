@@ -1,8 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jackie.broadcast">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:allowBackup="true"
@@ -18,6 +19,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.LoginActivity" />
+
         <receiver android:name=".receiver.MyOrderBroadcastReceiver">
             <intent-filter android:priority="100">
                 <action android:name="order.xxx" />
@@ -28,6 +31,13 @@
         <receiver android:name=".receiver.MyBootCompleteReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
+        <receiver android:name=".receiver.ForceOfflineReceiver">
+            <intent-filter>
+                <action android:name="com.example.broadcastbestpractice.FORCE_OFFLINE" />
             </intent-filter>
         </receiver>
 
